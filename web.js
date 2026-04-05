@@ -6,8 +6,6 @@ const scroll = new LocomotiveScroll({
 });
 
 
-const miniCircle=document.querySelector(".circle");
-console.log(miniCircle)
 
 
 //animation nav
@@ -34,48 +32,24 @@ console.log(miniCircle)
      duration:2,
      delay:-1,
    })
- }
- //skey circle 
- 
-
- function circleSkew(){
- const  xsacle=1;
- const yscale=1;
- const xprev=0;
- const yprev=0;
- 
-   window.addEventListener("touchmove",function(move){
-     const skew=move.touches[0]
-    if(skew.clientX==10){
-    let   xscale=0;
-    }
-console.log("X=","y=",skew.clientY)
-
-
-   })
- }
- 
-
-//move circle with touch for mobile//
-function circleMove(){
-  window.addEventListener("touchmove",function(data){
-    const move=data.touches[0]
-     miniCircle.style.transform=`translate(${move.clientX}px,${move.clientY}px)`;
-  });
-}
-firstAn()
-circleMove()
-circleSkew()
-
-//move circle with mouse for windows//
-  function  mouseFollower(){
-    window.addEventListener("mousemoves",function(dets){
-      miniCircle.style.transform=`translate(${dets.clientX}px,${clientY}px)`;
-      
-    });
   
-  };
-  mouseFollower()
+ }
+
+firstAn();
+
+function circleMove(){
+  document.addEventListener("mousemove",(e)=>{
+    let circletl=gsap.timeline();
+  
+  circletl.to(".circle",{
+    x:e.clientX,
+    y:e.clientY,
+  })
+  })
+}
+circleMove()
+ 
+
 
 //end event//
 
